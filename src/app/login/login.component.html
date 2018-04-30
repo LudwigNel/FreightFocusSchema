@@ -1,0 +1,30 @@
+<div class="col-md-12">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+          <div class="card-header">
+              <h3 class="mb-0">Login</h3>
+          </div>
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="login(f.value)">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input #username="ngModel" ngModel name="username" id="username" type="text" class="form-control" required>
+                <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
+                    Username is required.
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="password">Password</label>
+                  <input #password="ngModel" ngModel name="password" id="password" type="password" class="form-control" required>
+                  <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+                      Password is required.
+                  </div>
+              </div>
+              <button class="btn btn-primary">Save</button>
+            </form>
+          </div>
+        </div>     
+      </div>
+    </div>
+  </div>

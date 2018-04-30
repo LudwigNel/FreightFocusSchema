@@ -1,0 +1,25 @@
+<form #f="ngForm" (ngSubmit)="save(f.value)">
+  <div class="form-group">
+    <label for="version">Version</label>
+    <input #version="ngModel" [(ngModel)]="schema.version" name="Version" id="version" type="text" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="version.touched && version.invalid">
+        Version is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <input #comment="ngModel" [(ngModel)]="schema.comment" name="Comment" id="comment" type="text" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="comment.touched && comment.invalid">
+        Comment is required.
+     </div>
+  </div>
+  <div class="form-group">
+    <label for="content" style="vertical-align: top">Content</label>
+    <textarea #content="ngModel" [(ngModel)]="schema.content" name="Content" id="content" cols="30" rows="10" class="form-control" required></textarea>
+    <div class="alert alert-danger" *ngIf="content.touched && content.invalid">
+        Content is required.
+    </div>
+  </div>
+  <button class="btn btn-primary">Save</button>
+  <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+</form>

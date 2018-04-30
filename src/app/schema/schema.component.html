@@ -1,0 +1,49 @@
+<p>
+    <a routerLink="/schema/new" class="btn btn-primary">New Schema</a>
+</p>
+<p>
+    <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
+</p>
+
+<data-table
+    [items]="items"
+    [itemCount]="itemCount"
+    (reload)="reloadItems($event)"
+>
+    <data-table-column
+        [property]="'version'"
+        [header]="'Version'"
+        [sortable]="true"
+        [resizable]="true"
+    >
+        
+    </data-table-column>
+
+    <data-table-column
+        [property]="'comment'"
+        [header]="'Comment'"
+        [sortable]="true"
+        [resizable]="true"
+    >
+        
+    </data-table-column>
+
+    <data-table-column
+        [property]="'createdDate'"
+        [header]="'Date Created'"
+        [sortable]="true"
+        [resizable]="true"
+    >
+        <ng-template #dataTableCell let-item="item">
+            {{ item.createdDate | date: "dd/MM/yyyy HH:MM:ss"}}
+        </ng-template>
+    </data-table-column>
+
+    <data-table-column 
+        [property]="'schemaId'"
+    >
+        <ng-template #dataTableCell let-item="item">
+            <a [routerLink]="['/schema/edit/', item.schemaId]">Edit</a>
+        </ng-template>
+    </data-table-column>
+</data-table>
